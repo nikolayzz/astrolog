@@ -18,28 +18,28 @@ const blocks = [
   },
 ];
 
-export const getStaticProps = async () => {
-  try {
-    const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
-    const socialsData = await socialsResponse.json();
+// export const getStaticProps = async () => {
+//   try {
+//     const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+//     const socialsData = await socialsResponse.json();
 
-    if (!socialsData) {
-      return {
-        notFound: true,
-      };
-    }
+//     if (!socialsData) {
+//       return {
+//         notFound: true,
+//       };
+//     }
 
-    return {
-      props: { socials: socialsData },
-    };
-  } catch {
-    return {
-      props: { socials: null },
-    };
-  }
-};
-
-export default function Home({ socials }) {
+//     return {
+//       props: { socials: socialsData },
+//     };
+//   } catch {
+//     return {
+//       props: { socials: null },
+//     };
+//   }
+// };
+// { socials }
+export default function Home() {
   return (
     <div className="bg-[#b59797]">
       <div className="ml-3 md:ml-16 mt-5 md:mt-10">
@@ -151,7 +151,7 @@ export default function Home({ socials }) {
         </div>
       </div>
 
-      <Footer socials={socials} />
+      {/* <Footer socials={socials} /> */}
     </div>
   );
 }

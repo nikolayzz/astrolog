@@ -1,14 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Footer = ({ socials }) => {
+// { socials }
+const Footer = () => {
   return (
     <footer className="bg-[#3C2A2A] text-[#FBF6F6]">
       <div className="md:px-20 flex flex-col justify-evenly md:flex-row md:justify-between text-center items-center h-48 md:h-64 md:w-[1120px] m-auto">
         <div>
           <h2>Светлана Эрендженова</h2>
           <div className="mt-3 ">
-            <ul className="flex gap-3 justify-between">
+            {/* <ul className="flex gap-3 justify-between">
               {socials &&
                 socials.map((el) => (
                   <li key={el.id}>
@@ -23,7 +24,7 @@ const Footer = ({ socials }) => {
                     </a>
                   </li>
                 ))}
-            </ul>
+            </ul> */}
           </div>
         </div>
 
