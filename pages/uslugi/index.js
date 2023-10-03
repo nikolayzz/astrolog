@@ -1,31 +1,31 @@
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 
-// export const getStaticProps = async () => {
-//   try {
-//     const uslugiResponse = await fetch(`${process.env.API_HOST}/uslugi/`);
-//     const uslugiData = await uslugiResponse.json();
+export const getStaticProps = async () => {
+  try {
+    const uslugiResponse = await fetch(`${process.env.API_HOST}/uslugi/`);
+    const uslugiData = await uslugiResponse.json();
 
-//     const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
-//     const socialsData = await socialsResponse.json();
+    const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+    const socialsData = await socialsResponse.json();
 
-//     if (!socialsData && !uslugiData) {
-//       return {
-//         notFound: true,
-//       };
-//     }
+    if (!socialsData && !uslugiData) {
+      return {
+        notFound: true,
+      };
+    }
 
-//     return {
-//       props: { uslugi: uslugiData, socials: socialsData },
-//     };
-//   } catch {
-//     return {
-//       props: { uslugi: null, socials: null },
-//     };
-//   }
-// };
-// { uslugi, socials }
-const Uslugi = () => {
+    return {
+      props: { uslugi: uslugiData, socials: socialsData },
+    };
+  } catch {
+    return {
+      props: { uslugi: null, socials: null },
+    };
+  }
+};
+
+const Uslugi = ({ uslugi, socials }) => {
   return (
     <>
       <Header color="#FBF6F6" />
@@ -34,7 +34,7 @@ const Uslugi = () => {
           <h1 className="font-semibold text-[80px] text-[#FFFFFF]">
             Перечень моих услуг
           </h1>
-          {/* <div className="grid grid-cols-3 gap-7">
+          <div className="grid grid-cols-3 gap-7">
             {uslugi.map((el) => (
               <div className="bg-[#FBF5F5] p-10 text-center" key={el.id}>
                 <h2 className="font-bold text-xl pb-3">{el.title}</h2>
@@ -45,7 +45,7 @@ const Uslugi = () => {
                 <div className="pt-3 text-lg underline">Подробности</div>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
 
         <div className="my-24 m-auto max-w-6xl">
@@ -73,14 +73,14 @@ const Uslugi = () => {
           </div>
         </div>
 
-        {/* <div className="relative">
+        <div className="relative">
           <div className="absolute bottom-0 bg-[url('/uslugi-photo.png')] bg-contain ">
             Hello
           </div>
-        </div> */}
+        </div>
       </main>
 
-      {/* <Footer socials={socials} /> */}
+      <Footer socials={socials} />
     </>
   );
 };
