@@ -19,18 +19,24 @@ const blocks = [
 ];
 
 export const getStaticProps = async () => {
-  const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
-  const socialsData = await socialsResponse.json();
+  try {
+    const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+    const socialsData = await socialsResponse.json();
 
-  if (!socialsData) {
+    if (!socialsData) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
-      notFound: true,
+      props: { socials: socialsData },
+    };
+  } catch {
+    return {
+      props: null,
     };
   }
-
-  return {
-    props: { socials: socialsData },
-  };
 };
 
 export default function Home({ socials }) {

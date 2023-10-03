@@ -2,21 +2,27 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 
 export const getStaticProps = async () => {
-  const uslugiResponse = await fetch(`${process.env.API_HOST}/uslugi/`);
-  const uslugiData = await uslugiResponse.json();
+  try {
+    const uslugiResponse = await fetch(`${process.env.API_HOST}/uslugi/`);
+    const uslugiData = await uslugiResponse.json();
 
-  const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
-  const socialsData = await socialsResponse.json();
+    const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+    const socialsData = await socialsResponse.json();
 
-  if (!socialsData && !uslugiData) {
+    if (!socialsData && !uslugiData) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
-      notFound: true,
+      props: { uslugi: uslugiData, socials: socialsData },
+    };
+  } catch {
+    return {
+      props: { uslugi: null, socials: null },
     };
   }
-
-  return {
-    props: { uslugi: uslugiData, socials: socialsData },
-  };
 };
 
 const Uslugi = ({ uslugi, socials }) => {
