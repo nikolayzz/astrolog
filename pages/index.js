@@ -1,118 +1,151 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Footer from '@/components/footer/Footer';
+import Header from '@/components/header/Header';
+import Image from 'next/image';
+import arrowIcon from '../assets/icons/arrow.svg';
 
-const inter = Inter({ subsets: ['latin'] })
+const blocks = [
+  {
+    id: 1,
+    text: 'Перечень моих услуг',
+  },
+  {
+    id: 2,
+    text: 'Обучение астрологии с нуля',
+  },
+  {
+    id: 3,
+    text: 'Марафоны для вас',
+  },
+];
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+  const socialsData = await socialsResponse.json();
+
+  if (!socialsData) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { socials: socialsData },
+  };
+};
+
+export default function Home({ socials }) {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="bg-[#b59797]">
+      <div className="ml-3 md:ml-16 mt-5 md:mt-10">
+        <Header color="#FBF6F6" />
+        <main className="px-10 pt-10 pb-40 md:p-10  md:h-[550px] bg-[#FBF6F6] text-[#3C2A2A]">
+          <div>
+            <div className="m-auto xl:w-[1120px]">
+              <h2 className="md:ml-28 font-bold text-lg">
+                Персональный астролог
+              </h2>
+              <div className="xl:w-[1000px]">
+                <h1 className="font-semibold text-5xl xl:text-[80px]">
+                  Светлана Эрендженова
+                </h1>
+              </div>
+            </div>
+
+            <div className="pt-5 md:flex xl:w-[1120px] m-auto">
+              <div className="md:ml-28 md:w-[400px] xl:w-[472px] font-normal text-lg">
+                <p className="mb-3">
+                  Ежедневно взаимодействую с клиентами через консультации,
+                  проведение марафонов. Беспрерывно обучаюсь и совершенствую
+                  свои профессиональные навыки.
+                </p>
+                <p className="mb-3">
+                  Мои клиенты нашли любимое дело, увеличили свой доход,
+                  счастливы в отношениях и знают, что их ждет в этом году.
+                </p>
+                <p className="mb-3">
+                  8 из 10 клиетнтов после первой консультации, возвращаются
+                  снова и рекомендуют меня своим друзьям и близким.
+                </p>
+                <p className="mb-3">А вот немного моей практики в числах:</p>
+                <div className="flex">
+                  <div>
+                    <div className="text-4xl md:text-5xl">10 000+</div>
+                    <div>часов с клиентами</div>
+                  </div>
+                  <div className="ml-10">
+                    <div className="text-4xl md:text-5xl">4 года+</div>
+                    <div>роста в астрологии</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hidden md:block">
+                <Image
+                  src="/main-photo.png"
+                  alt="photo"
+                  width="400"
+                  height="400"
+                  className=""
+                />
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <div className="md:hidden -mt-28 ml-5">
+          <Image
+            src="/main-photo.png"
+            alt="photo"
+            width="400"
+            height="400"
+            className=""
+          />
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="bg-[#b59797] md:flex md:justify-center md:items-center ml-3 my-10 md:m-auto md:w-[1120px] md:my-24">
+        <div className="flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-6">
+          <div className="bg-[#ECE2DF] xl:w-[560px] h-[103px] flex justify-center items-center">
+            <div className="flex justify-around items-center w-full">
+              <div className="w-5/6 pl-8">
+                <span className="text-xl font-bold text-[#3C2A2A]">
+                  Перечень моих услуг
+                </span>
+              </div>
+              <div className="w-1/6">
+                <Image src={arrowIcon} alt="arrow" width={30} height={30} />
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden md:block"></div>
+
+          <div className="bg-[#ECE2DF] text-xl font-bold text-[#3C2A2A] xl:w-[560px] h-[103px] flex justify-center items-center">
+            <div className="flex justify-around items-center w-full">
+              <div className="w-5/6 pl-8">
+                <span className="text-xl font-bold text-[#3C2A2A]">
+                  Обучение астрологии с нуля
+                </span>
+              </div>
+              <div className="w-1/6">
+                <Image src={arrowIcon} alt="arrow" width={30} height={30} />
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#ECE2DF] text-xl font-bold text-[#3C2A2A] xl:w-[560px] h-[103px] flex justify-center items-center">
+            <div className="w-5/6 pl-8">
+              <span className="text-xl font-bold text-[#3C2A2A]">
+                Марафоны для вас
+              </span>
+            </div>
+            <div className="w-1/6">
+              <Image src={arrowIcon} alt="arrow" width={30} height={30} />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      <Footer socials={socials} />
+    </div>
+  );
 }
