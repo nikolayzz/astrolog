@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Modal from '../Modal';
+import { useState } from 'react';
 
 const Footer = ({ socials }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <footer className="bg-[#3C2A2A] text-[#FBF6F6] text-xl">
       <div className="md:px-20 flex flex-col justify-evenly md:flex-row md:justify-between text-center items-center md:items-start h-48 md:pt-12 md:h-52 md:w-[1120px] m-auto">
@@ -39,9 +43,15 @@ const Footer = ({ socials }) => {
             Политика конфиденциальности
           </Link>
           <br />
-          <Link href="#" className="underline">
+          <button
+            onClick={() => {
+              setShowModal(true);
+            }}
+            className="underline"
+          >
             Связаться со мной
-          </Link>
+          </button>
+          <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
         </div>
       </div>
     </footer>
