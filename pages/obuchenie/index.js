@@ -5,29 +5,29 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Image from 'next/image';
 
-export const getStaticProps = async () => {
-  try {
-    const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
-    const socialsData = await socialsResponse.json();
+// export const getStaticProps = async () => {
+//   try {
+//     const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+//     const socialsData = await socialsResponse.json();
 
-    const obuchenieResponse = await fetch(`${process.env.API_HOST}/obuchenie/`);
-    const obuchenieData = await obuchenieResponse.json();
+//     const obuchenieResponse = await fetch(`${process.env.API_HOST}/obuchenie/`);
+//     const obuchenieData = await obuchenieResponse.json();
 
-    if (!socialsData) {
-      return {
-        notFound: true,
-      };
-    }
+//     if (!socialsData) {
+//       return {
+//         notFound: true,
+//       };
+//     }
 
-    return {
-      props: { socials: socialsData, obuchenie: obuchenieData },
-    };
-  } catch {
-    return {
-      props: { socials: null },
-    };
-  }
-};
+//     return {
+//       props: { socials: socialsData, obuchenie: obuchenieData },
+//     };
+//   } catch {
+//     return {
+//       props: { socials: null },
+//     };
+//   }
+// };
 
 const Obuchenie = ({ socials, obuchenie }) => {
   return (
@@ -143,7 +143,7 @@ const Obuchenie = ({ socials, obuchenie }) => {
             Программа обучения
           </h1>
         </div>
-        <Accordion content={obuchenie} />
+        {/* <Accordion content={obuchenie} /> */}
       </div>
 
       <div className="md:h-[1100px] ml-3 pb-10 md:ml-16 mt-5 md:mt-10 bg-[#FBF6F6] text-[#3C2A2A]">
@@ -340,7 +340,7 @@ const Obuchenie = ({ socials, obuchenie }) => {
         </div>
       </div>
 
-      <Footer socials={socials} />
+      {/* <Footer socials={socials} /> */}
     </div>
   );
 };
