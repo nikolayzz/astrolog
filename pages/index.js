@@ -2,21 +2,7 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Image from 'next/image';
 import arrowIcon from '../assets/icons/arrow.svg';
-
-const blocks = [
-  {
-    id: 1,
-    text: 'Перечень моих услуг',
-  },
-  {
-    id: 2,
-    text: 'Обучение астрологии с нуля',
-  },
-  {
-    id: 3,
-    text: 'Марафоны для вас',
-  },
-];
+import BigButton from '@/components/BigButton';
 
 export const getStaticProps = async () => {
   try {
@@ -44,7 +30,7 @@ export default function Home({ socials }) {
     <div className="bg-[#b59797]">
       <div className="ml-3 md:ml-16 mt-5 md:mt-10">
         <Header color="#FBF6F6" />
-        <main className="px-10 pt-10 pb-40 md:p-10  md:h-[550px] bg-[#FBF6F6] text-[#3C2A2A]">
+        <main className="px-10 pt-10 pb-40 md:p-10 md:h-[550px] bg-[#FBF6F6] text-[#3C2A2A]">
           <div>
             <div className="m-auto xl:w-[1120px]">
               <h2 className="md:ml-28 font-bold text-lg">
@@ -111,43 +97,10 @@ export default function Home({ socials }) {
 
       <div className="bg-[#b59797] md:flex md:justify-center md:items-center ml-3 my-10 md:m-auto md:w-[1120px] md:my-24">
         <div className="flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-6">
-          <div className="bg-[#ECE2DF] xl:w-[560px] h-[103px] flex justify-center items-center">
-            <div className="flex justify-around items-center w-full">
-              <div className="w-5/6 pl-8">
-                <span className="text-xl font-bold text-[#3C2A2A]">
-                  Перечень моих услуг
-                </span>
-              </div>
-              <div className="w-1/6">
-                <Image src={arrowIcon} alt="arrow" width={30} height={30} />
-              </div>
-            </div>
-          </div>
-
+          <BigButton title="Перечень моих услуг" href="/uslugi" />
           <div className="hidden md:block"></div>
-
-          <div className="bg-[#ECE2DF] text-xl font-bold text-[#3C2A2A] xl:w-[560px] h-[103px] flex justify-center items-center">
-            <div className="flex justify-around items-center w-full">
-              <div className="w-5/6 pl-8">
-                <span className="text-xl font-bold text-[#3C2A2A]">
-                  Обучение астрологии с нуля
-                </span>
-              </div>
-              <div className="w-1/6">
-                <Image src={arrowIcon} alt="arrow" width={30} height={30} />
-              </div>
-            </div>
-          </div>
-          <div className="bg-[#ECE2DF] text-xl font-bold text-[#3C2A2A] xl:w-[560px] h-[103px] flex justify-center items-center">
-            <div className="w-5/6 pl-8">
-              <span className="text-xl font-bold text-[#3C2A2A]">
-                Марафоны для вас
-              </span>
-            </div>
-            <div className="w-1/6">
-              <Image src={arrowIcon} alt="arrow" width={30} height={30} />
-            </div>
-          </div>
+          <BigButton title="Обучение астрологии с нуля" />
+          <BigButton title="Марафоны для вас" />
         </div>
       </div>
 

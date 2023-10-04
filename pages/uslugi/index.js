@@ -1,6 +1,10 @@
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 
+import Accordion from '@/components/Accordion';
+import BigButton from '@/components/BigButton';
+import Button from '@/components/Button';
+
 export const getStaticProps = async () => {
   try {
     const uslugiResponse = await fetch(`${process.env.API_HOST}/uslugi/`);
@@ -9,77 +13,68 @@ export const getStaticProps = async () => {
     const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
     const socialsData = await socialsResponse.json();
 
-    if (!socialsData && !uslugiData) {
+    const questionsResponse = await fetch(`${process.env.API_HOST}/questions/`);
+    const questionsData = await questionsResponse.json();
+
+    if (!socialsData && !uslugiData && !questionsData) {
       return {
         notFound: true,
       };
     }
 
     return {
-      props: { uslugi: uslugiData, socials: socialsData },
+      props: {
+        uslugi: uslugiData,
+        socials: socialsData,
+        questions: questionsData,
+      },
     };
   } catch {
     return {
-      props: { uslugi: null, socials: null },
+      props: { uslugi: null, socials: null, questions: null },
     };
   }
 };
 
-const Uslugi = ({ uslugi, socials }) => {
+const Uslugi = ({ uslugi, socials, questions }) => {
   return (
     <>
       <Header color="#FBF6F6" />
       <main className="bg-[#FBF6F6] text-[#3C2A2A]">
-        <div className="px-10 py-20 ml-16 bg-[#b59797]">
-          <h1 className="font-semibold text-[80px] text-[#FFFFFF]">
+        <div className="pl-5 md:px-10 py-20 md:ml-16 bg-[#b59797]">
+          <h1 className="font-semibold text-[40px] md:text-[80px] text-[#FFFFFF]">
             Перечень моих услуг
           </h1>
-          <div className="grid grid-cols-3 gap-7">
+          <div className="md:grid grid-cols-3 gap-7">
             {uslugi.map((el) => (
               <div className="bg-[#FBF5F5] p-10 text-center" key={el.id}>
                 <h2 className="font-bold text-xl pb-3">{el.title}</h2>
                 <p className="text-lg pb-3">Стоимость: {el.price} руб.</p>
-                <button className=" border-2 border-[#8D6B5D] text-lg font-bold py-3 px-5">
-                  Заказать
-                </button>
+                <Button title="Заказать" />
                 <div className="pt-3 text-lg underline">Подробности</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="my-24 m-auto max-w-6xl">
-          <h1 className="font-semibold text-[80px]">
+        <div className="p-6 md:p-0 my-24 m-auto max-w-6xl">
+          <h1 className="font-semibold text-[40px] md:text-[80px]">
             Мне часто задают эти вопросы:
           </h1>
-          <div className="text-lg">
-            <div>Что делать если я не знаю точного времени рождения?</div>
+          <Accordion content={questions} />
 
-            <div>Как долго ждать заказ?</div>
-
-            <div>Что я получу в результате?</div>
-
-            <div>Какие данные нужны для заказа?</div>
-
-            <div>Как можно оплатить?</div>
-          </div>
-          <div className="flex justify-between py-5">
-            <button className="text-lg font-bold text-center border-2 border-[#3C2A2A] p-4">
-              Записаться на консультацию
-            </button>
-            <button className="text-lg font-bold text-center border-2 border-[#3C2A2A] p-4">
-              Посмотреть отзывы
-            </button>
-          </div>
-        </div>
-
-        <div className="relative">
-          <div className="absolute bottom-0 bg-[url('/uslugi-photo.png')] bg-contain ">
-            Hello
+          <div className="flex flex-col gap-3 md:gap-0 items-center md:flex-row justify-between py-5">
+            <Button title="Записаться на консультацию" />
+            <Button title="Посмотреть отзывы" />
           </div>
         </div>
       </main>
-
+      <div className="md:flex md:justify-center md:items-center ml-3 my-10 md:m-auto md:w-[1120px] md:my-24">
+        <div className="flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-6">
+          <BigButton title="Обучение астрологии с нуля" />
+          <BigButton title="Марафоны для вас" />
+        </div>
+      </div>
       <Footer socials={socials} />
     </>
   );
