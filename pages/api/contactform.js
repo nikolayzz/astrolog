@@ -20,7 +20,7 @@ export default (req, res) => {
   });
 
   const message = {
-    to: 'k3820955@gmail.com',
+    to: 'bankrot.cntr@gmail.com',
     subject: `Запись на консультацию. Клиент ${req.body.valueName}`,
     text: `${req.body.valueText}. 
     Имя: ${req.body.valueName}, Телефон: ${req.body.valuePhone}`,
