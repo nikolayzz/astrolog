@@ -1,7 +1,6 @@
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Image from 'next/image';
-import arrowIcon from '../assets/icons/arrow.svg';
 import BigButton from '@/components/BigButton';
 
 export const getStaticProps = async () => {

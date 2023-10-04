@@ -5,36 +5,36 @@ import Accordion from '@/components/Accordion';
 import BigButton from '@/components/BigButton';
 import Button from '@/components/Button';
 
-// export const getStaticProps = async () => {
-//   try {
-//     const uslugiResponse = await fetch(`${process.env.API_HOST}/uslugi/`);
-//     const uslugiData = await uslugiResponse.json();
+export const getStaticProps = async () => {
+  try {
+    const uslugiResponse = await fetch(`${process.env.API_HOST}/uslugi/`);
+    const uslugiData = await uslugiResponse.json();
 
-//     const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
-//     const socialsData = await socialsResponse.json();
+    const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+    const socialsData = await socialsResponse.json();
 
-//     const questionsResponse = await fetch(`${process.env.API_HOST}/questions/`);
-//     const questionsData = await questionsResponse.json();
+    const questionsResponse = await fetch(`${process.env.API_HOST}/questions/`);
+    const questionsData = await questionsResponse.json();
 
-//     if (!socialsData && !uslugiData && !questionsData) {
-//       return {
-//         notFound: true,
-//       };
-//     }
+    if (!socialsData && !uslugiData && !questionsData) {
+      return {
+        notFound: true,
+      };
+    }
 
-//     return {
-//       props: {
-//         uslugi: uslugiData,
-//         socials: socialsData,
-//         questions: questionsData,
-//       },
-//     };
-//   } catch {
-//     return {
-//       props: { uslugi: null, socials: null, questions: null },
-//     };
-//   }
-// };
+    return {
+      props: {
+        uslugi: uslugiData,
+        socials: socialsData,
+        questions: questionsData,
+      },
+    };
+  } catch {
+    return {
+      props: { uslugi: null, socials: null, questions: null },
+    };
+  }
+};
 
 const Uslugi = ({ uslugi, socials, questions }) => {
   return (
@@ -46,14 +46,14 @@ const Uslugi = ({ uslugi, socials, questions }) => {
             Перечень моих услуг
           </h1>
           <div className="md:grid grid-cols-3 gap-7">
-            {/* {uslugi.map((el) => (
+            {uslugi.map((el) => (
               <div className="bg-[#FBF5F5] p-10 text-center" key={el.id}>
                 <h2 className="font-bold text-xl pb-3">{el.title}</h2>
                 <p className="text-lg pb-3">Стоимость: {el.price} руб.</p>
                 <Button title="Заказать" />
                 <div className="pt-3 text-lg underline">Подробности</div>
               </div>
-            ))} */}
+            ))}
           </div>
         </div>
 
@@ -61,7 +61,7 @@ const Uslugi = ({ uslugi, socials, questions }) => {
           <h1 className="font-semibold text-[40px] md:text-[80px]">
             Мне часто задают эти вопросы:
           </h1>
-          {/* <Accordion content={questions} /> */}
+          <Accordion content={questions} />
 
           <div className="flex flex-col gap-3 md:gap-0 items-center md:flex-row justify-between py-5">
             <Button title="Записаться на консультацию" />
@@ -75,7 +75,7 @@ const Uslugi = ({ uslugi, socials, questions }) => {
           <BigButton title="Марафоны для вас" />
         </div>
       </div>
-      {/* <Footer socials={socials} /> */}
+      <Footer socials={socials} />
     </>
   );
 };
