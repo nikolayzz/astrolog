@@ -45,7 +45,7 @@ const Uslugi = ({ uslugi, socials, questions }) => {
           <h1 className="font-semibold text-[40px] md:text-[80px] text-[#FFFFFF]">
             Перечень моих услуг
           </h1>
-          <div className="md:grid grid-cols-3 gap-7">
+          <div className="flex flex-col md:grid grid-cols-3 gap-7">
             {uslugi.map((el) => (
               <div className="bg-[#FBF5F5] p-10 text-center" key={el.id}>
                 <h2 className="font-bold text-xl pb-3">{el.title}</h2>

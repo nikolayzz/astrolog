@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Modal from '../Modal';
+import ModalContact from '../ModalContact';
 import { useState } from 'react';
+import Modal from '../Modal';
 
 const Footer = ({ socials }) => {
   const [showModal, setShowModal] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   return (
     <footer className="bg-[#3C2A2A] text-[#FBF6F6] text-xl">
@@ -35,6 +37,22 @@ const Footer = ({ socials }) => {
           <Link href="/" className="underline">
             На главную
           </Link>
+          <div>
+            <button
+              onClick={() => {
+                setModalVisible(true);
+              }}
+              className="underline"
+            >
+              Тестовая модалка
+            </button>
+            <Modal
+              isModalVisible={isModalVisible}
+              onClose={() => setModalVisible(false)}
+              title="Тестовый заголовок"
+              text="Здесь будет текст модального окна"
+            />
+          </div>
         </div>
 
         <div>
@@ -51,7 +69,10 @@ const Footer = ({ socials }) => {
           >
             Связаться со мной
           </button>
-          <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
+          <ModalContact
+            isVisible={showModal}
+            onClose={() => setShowModal(false)}
+          />
         </div>
       </div>
     </footer>
