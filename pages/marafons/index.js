@@ -126,8 +126,8 @@ const Marafons = ({ socials, marafons }) => {
 
         <div className="md:flex md:justify-center md:items-center ml-3 my-10 md:m-auto md:w-[1120px] md:my-24">
           <div className="flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-6">
-            <BigButton title="Обучение астрологии с нуля" />
-            <BigButton title="Марафоны для вас" />
+            <BigButton title="Обучение астрологии с нуля" href="/obuchenie" />
+            <BigButton title="Марафоны для вас" href="/marafons" />
           </div>
         </div>
       </main>

@@ -334,8 +334,8 @@ const Obuchenie = ({ socials, obuchenie }) => {
         <div className="flex">
           <div className="md:w-1/2"></div>
           <div className="flex flex-col gap-3 ml-3 w-full md:w-1/2">
-            <BigButton title="Перечень моих услуг" />
-            <BigButton title="Марафоны для вас" />
+            <BigButton title="Перечень моих услуг" href="/uslugi" />
+            <BigButton title="Марафоны для вас" href="/marafons" />
           </div>
         </div>
       </div>
