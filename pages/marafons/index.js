@@ -3,29 +3,29 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Image from 'next/image';
 
-export const getStaticProps = async () => {
-  try {
-    const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
-    const socialsData = await socialsResponse.json();
+// export const getStaticProps = async () => {
+//   try {
+//     const socialsResponse = await fetch(`${process.env.API_HOST}/socials/`);
+//     const socialsData = await socialsResponse.json();
 
-    const marafonsResponse = await fetch(`${process.env.API_HOST}/marafons/`);
-    const marafonsData = await marafonsResponse.json();
+//     const marafonsResponse = await fetch(`${process.env.API_HOST}/marafons/`);
+//     const marafonsData = await marafonsResponse.json();
 
-    if (!socialsData && !marafonsData) {
-      return {
-        notFound: true,
-      };
-    }
+//     if (!socialsData && !marafonsData) {
+//       return {
+//         notFound: true,
+//       };
+//     }
 
-    return {
-      props: { socials: socialsData, marafons: marafonsData },
-    };
-  } catch {
-    return {
-      props: { socials: null },
-    };
-  }
-};
+//     return {
+//       props: { socials: socialsData, marafons: marafonsData },
+//     };
+//   } catch {
+//     return {
+//       props: { socials: null },
+//     };
+//   }
+// };
 
 const Marafons = ({ socials, marafons }) => {
   return (
@@ -73,7 +73,7 @@ const Marafons = ({ socials, marafons }) => {
           />
 
           <div className="md:w-1/2 px-5 md:px-12">
-            {marafons.map((el) => (
+            {/* {marafons.map((el) => (
               <div key={el.id} className="mb-36">
                 <div>
                   <h2 className="text-3xl md:text-[40px] font-bold">
@@ -97,7 +97,7 @@ const Marafons = ({ socials, marafons }) => {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
 
           <div className="hidden md:block md:w-1/2">
@@ -131,7 +131,7 @@ const Marafons = ({ socials, marafons }) => {
           </div>
         </div>
       </main>
-      <Footer socials={socials} />
+      {/* <Footer socials={socials} /> */}
     </div>
   );
 };
