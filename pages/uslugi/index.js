@@ -39,7 +39,7 @@ export const getStaticProps = async () => {
 const Uslugi = ({ uslugi, socials, questions }) => {
   return (
     <>
-      <Header color="#FBF6F6" />
+      <Header logo={true} color="#FBF6F6" text="#3C2A2A" />
       <main className="bg-[#FBF6F6] text-[#3C2A2A]">
         <div className="pl-5 md:px-10 py-20 md:ml-16 bg-[#b59797]">
           <h1 className="font-semibold text-[40px] md:text-[80px] text-[#FFFFFF]">

@@ -28,11 +28,11 @@ export default function Home({ socials }) {
   return (
     <div className="bg-[#b59797]">
       <div className="ml-3 md:ml-16 mt-5 md:mt-10">
-        <Header color="#FBF6F6" />
-        <main className="px-10 pt-10 pb-40 md:p-10 md:h-[550px] bg-[#FBF6F6] text-[#3C2A2A]">
+        <Header logo={true} color="#FBF6F6" text="#3C2A2A" />
+        <main className="px-10 pt-10 pb-40 md:p-10 md:h-[600px] bg-[#FBF6F6] text-[#3C2A2A]">
           <div>
             <div className="m-auto xl:w-[1120px]">
-              <h2 className="md:ml-28 font-bold text-lg">
+              <h2 className="md:ml-8 font-bold text-lg">
                 Персональный астролог
               </h2>
               <div className="xl:w-[1000px]">
@@ -43,7 +43,7 @@ export default function Home({ socials }) {
             </div>
 
             <div className="pt-5 md:flex xl:w-[1120px] m-auto">
-              <div className="md:ml-28 md:w-[400px] xl:w-[472px] font-normal text-lg">
+              <div className="md:ml-8 md:w-1/2 font-normal text-lg md:pr-5">
                 <p className="mb-3">
                   Ежедневно взаимодействую с клиентами через консультации,
                   проведение марафонов. Беспрерывно обучаюсь и совершенствую
@@ -70,12 +70,12 @@ export default function Home({ socials }) {
                 </div>
               </div>
 
-              <div className="hidden md:block">
+              <div className="hidden md:block md:w-1/2">
                 <Image
                   src="/main-photo.png"
                   alt="photo"
-                  width="400"
-                  height="400"
+                  width={500}
+                  height={500}
                   className=""
                 />
               </div>

@@ -32,7 +32,7 @@ export const getStaticProps = async () => {
 const Obuchenie = ({ socials, obuchenie }) => {
   return (
     <div>
-      <Header color="#FBF6F6" />
+      <Header logo={true} color="#FBF6F6" text="#3C2A2A" />
       <main className="bg-[#FBF6F6] text-[#3C2A2A]">
         <div className="px-10">
           <div>
